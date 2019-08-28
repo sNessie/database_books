@@ -44,6 +44,7 @@ public class Main {
                 break;
             }
             case "3": {
+                bringBackBook();
                 break;
             }
             case "4": {
@@ -51,6 +52,19 @@ public class Main {
                 break;
             }
         }
+    }
+
+    private void bringBackBook() {
+        System.out.println("Podaj nazwę książki");
+        String name = scanner.nextLine();
+        for (Book book : bookList) {
+            if (book.getName().equalsIgnoreCase(name) && book.getRentStatus() == 1) {
+                book.setRentStatus(0);
+                System.out.println("Dziękuję za oddanie książki:  " + book.getName());
+                return;
+            }
+        }
+        System.out.println("Brak takiej książki albo nie jest wypożyczona");
     }
 
     private void rentBook() {
