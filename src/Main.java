@@ -7,7 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         new Main();
-
     }
 
     private Scanner scanner;
@@ -35,13 +34,44 @@ public class Main {
 
     private void parseChoice(String command) {
         switch (command){
-            case "4": {
-                for (Book book : bookList) {
-                    if (book.getRentStatus() == 0){
-                        System.out.println("Wolna pozycja: " + book.getName());
-                    }
-                }
+            case "1": {
+                addBook();
                 break;
+            }
+            case "4": {
+               showFreeBooks();
+               
+                break;
+            }
+        }
+    }
+
+    private void addBook() {
+        System.out.println("Dodaj nową książkę");
+        String title, author;
+        int pages, produceYear;
+
+        System.out.println("Podaj tytuł");
+        title = scanner.nextLine();
+
+        System.out.println("Podaj autora");
+        author = scanner.nextLine();
+
+        System.out.println("Podaj ilość stron");
+        pages = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Podaj rok wydania");
+        produceYear = Integer.parseInt(scanner.nextLine());
+
+        bookList.add(new Book(title, author, pages, produceYear, 0));
+        System.out.println("Dodano książkę: " + title);
+
+    }
+
+    private void showFreeBooks() {
+        for (Book book : bookList) {
+            if (book.getRentStatus() == 0){
+                System.out.println("Wolna pozycja: " + book.getName());
             }
         }
     }
