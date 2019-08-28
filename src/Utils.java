@@ -51,5 +51,17 @@ public class Utils {
         }
     }
 
+    public static void saveBooksToFileNew(Path path, List<Book> books){
+        List<String> lines = new ArrayList<>();
 
+        for (Book book : books) {
+            lines.add(book.toString());
+        }
+
+        try {
+            Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
