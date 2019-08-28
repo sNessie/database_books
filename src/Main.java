@@ -18,7 +18,7 @@ public class Main {
         start();
     }
 
-    private void start(){
+    private void start() {
         System.out.println("Witaj w mojej bibliotece");
         String command;
         do {
@@ -33,17 +33,38 @@ public class Main {
     }
 
     private void parseChoice(String command) {
-        switch (command){
+        switch (command) {
             case "1": {
                 addBook();
                 break;
             }
+
+            case "2": {
+                rentBook();
+                break;
+            }
+            case "3": {
+                break;
+            }
             case "4": {
-               showFreeBooks();
-               
+                showFreeBooks();
                 break;
             }
         }
+    }
+
+    private void rentBook() {
+        System.out.println("Podaj nazwę książki");
+        String name = scanner.nextLine();
+        for (Book book : bookList) {
+            if (book.getName().equalsIgnoreCase(name) && book.getRentStatus() == 0) {
+                book.setRentStatus(1);
+                System.out.println("Wypożyczono książkę " + book.getName());
+                System.out.println("Oddaj jak tylko przeczytasz");
+                return;
+            }
+        }
+        System.out.println("Brak takiej książki albo jest wypożyczona");
     }
 
     private void addBook() {
@@ -70,7 +91,7 @@ public class Main {
 
     private void showFreeBooks() {
         for (Book book : bookList) {
-            if (book.getRentStatus() == 0){
+            if (book.getRentStatus() == 0) {
                 System.out.println("Wolna pozycja: " + book.getName());
             }
         }
