@@ -14,7 +14,7 @@ public class Main {
 
     public Main() {
         scanner = new Scanner(System.in);
-        bookList = Utils.parseBookFromFile(Paths.get("books.txt"));
+        bookList = Utils.parseBooksFromFile(Paths.get("books.txt"));
         start();
     }
 
@@ -51,6 +51,13 @@ public class Main {
                 showFreeBooks();
                 break;
             }
+            case "exit": {
+                Utils.saveBookToFile( Paths.get("books.txt"), bookList);
+                break;
+            }
+            default:
+                System.out.println("Komdenda niepoprawna");
+                break;
         }
     }
 
@@ -88,6 +95,13 @@ public class Main {
 
         System.out.println("Podaj tytuł");
         title = scanner.nextLine();
+        for (Book book : bookList) {
+            if (book.getName().equalsIgnoreCase(title)){
+                System.out.println("Książka już istnieje");
+                return;
+            }
+
+        }
 
         System.out.println("Podaj autora");
         author = scanner.nextLine();

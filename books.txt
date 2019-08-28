@@ -1,4 +1,4 @@
 Programowanie z Oskim:Oskar:200:2002:0
-Java:Wojtek:500:2008:0
-Gotuj z:Chester:50:2017:1
+Java:Wojtek:50:2008:1
+Gotuj z czesterem:Chester:100:2017:1
 Scrum:Oskar:32:2005:0
